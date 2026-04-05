@@ -9,7 +9,6 @@ const CATEGORY_FILTERS = [
   { key: 'coverage', label: 'Coverage' },
   { key: 'expirations', label: 'Expirations' },
   { key: 'professional', label: 'Professional' },
-  { key: 'bills', label: 'Bills' },
   { key: 'references', label: 'References' },
 ];
 

@@ -12,7 +12,12 @@ import { todayISO } from './utils/dates';
 // ─── App root ─────────────────────────────────────────────────────────────────
 export default function App() {
   // Raw items from storage, enriched with computed riskLevel on every render
-  const [rawItems, setRawItems] = useState(() => loadItems(MOCK_ITEMS));
+  // Filter out any legacy items with unknown categories (e.g. old 'bills' items)
+  const VALID_CATEGORIES = ['coverage', 'expirations', 'professional', 'references'];
+  const [rawItems, setRawItems] = useState(() => {
+    const stored = loadItems(MOCK_ITEMS);
+    return stored.filter((item) => VALID_CATEGORIES.includes(item.category));
+  });
   const items = useMemo(() => enrichItems(rawItems), [rawItems]);
 
   // Persist on every change
