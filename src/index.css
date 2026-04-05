@@ -1,0 +1,76 @@
+/* Foundation — Global Styles */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI',
+    system-ui, Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #1A1917;
+  background: #F3F2EF;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: #E8E6E0;
+}
+
+#root {
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  background: #E8E6E0;
+  overflow: hidden;
+}
+
+/* Typography resets */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: 700;
+}
+
+p { margin: 0; }
+
+button {
+  font-family: inherit;
+}
+
+input, textarea, select {
+  font-family: inherit;
+}
+
+/* Remove tap highlight on mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Scrollbar hide for filter chips */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Focus styles */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #2F3437;
+  outline-offset: 2px;
+}
