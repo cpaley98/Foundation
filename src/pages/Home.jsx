@@ -467,7 +467,7 @@ export default function Home({ items, onItemClick, onCategoryClick }) {
   const pad = { paddingLeft: spacing.pagePad, paddingRight: spacing.pagePad };
 
   return (
-    <div style={{ paddingTop: 16, paddingBottom: 24 }}>
+    <div style={{ paddingTop: 'calc(env(safe-area-inset-top) + 16px)', paddingBottom: 24 }}>
       {/* Wordmark header */}
       <div
         style={{

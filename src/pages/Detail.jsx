@@ -204,7 +204,7 @@ export default function Detail({ item, onBack, onEdit, onDelete, onMarkVerified 
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            padding: `14px ${spacing.pagePad}px 12px`,
+            padding: `calc(env(safe-area-inset-top) + 14px) ${spacing.pagePad}px 12px`,
             borderBottom: `1px solid ${colors.borderLight}`,
             background: colors.pageBg,
             position: 'sticky',

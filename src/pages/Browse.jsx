@@ -224,7 +224,7 @@ export default function Browse({ items, onItemClick, onAddClick, initialCategory
   }, [items, catFilter, statusFilter, search]);
 
   return (
-    <div style={{ paddingTop: 16, paddingBottom: 24 }}>
+    <div style={{ paddingTop: 'calc(env(safe-area-inset-top) + 16px)', paddingBottom: 24 }}>
       {/* Header */}
       <div
         style={{

@@ -112,6 +112,7 @@ export default function App() {
         maxWidth: 430,
         width: '100%',
         height: '100dvh',
+        boxSizing: 'border-box',
         margin: '0 auto',
         background: '#F3F2EF',
         position: 'relative',
@@ -119,9 +120,6 @@ export default function App() {
         flexDirection: 'column',
         overflow: 'hidden',
         boxShadow: '0 0 0 1px rgba(0,0,0,0.06), 0 20px 60px rgba(0,0,0,0.08)',
-        // Respect iPhone notch / Dynamic Island at top, home indicator at bottom
-        paddingTop: 'env(safe-area-inset-top)',
-        paddingBottom: 'env(safe-area-inset-bottom)',
       }}
     >
       {/* Scrollable content */}
