@@ -31,15 +31,6 @@ const SUBTYPES = {
     { key: 'certification', label: 'Certification' },
     { key: 'other', label: 'Other' },
   ],
-  bills: [
-    { key: 'rent', label: 'Rent' },
-    { key: 'mortgage', label: 'Mortgage' },
-    { key: 'loan', label: 'Loan' },
-    { key: 'credit-card', label: 'Credit Card' },
-    { key: 'utility', label: 'Utility' },
-    { key: 'subscription', label: 'Subscription' },
-    { key: 'other', label: 'Other' },
-  ],
   references: [
     { key: 'contact', label: 'Contact' },
     { key: 'document-location', label: 'Document Location' },
@@ -123,8 +114,6 @@ export default function AddEdit({ item, onBack, onSave }) {
     providerOrIssuer: item?.providerOrIssuer ?? '',
     partialReference: item?.partialReference ?? '',
     expirationDate: item?.expirationDate ?? '',
-    dueDate: item?.dueDate ?? '',
-    isRecurring: item?.isRecurring ?? false,
     reminderLeadTime: item?.reminderLeadTime ?? 60,
     renewalUrl: item?.renewalUrl ?? '',
     contactPhone: item?.contactPhone ?? '',
@@ -178,8 +167,6 @@ export default function AddEdit({ item, onBack, onSave }) {
       providerOrIssuer: form.providerOrIssuer.trim() || null,
       partialReference: form.partialReference.trim() || null,
       expirationDate: form.expirationDate || null,
-      dueDate: form.dueDate || null,
-      isRecurring: form.isRecurring,
       reminderLeadTime: Number(form.reminderLeadTime) || 60,
       renewalUrl: form.renewalUrl.trim() || null,
       contactPhone: form.contactPhone.trim() || null,
@@ -192,7 +179,6 @@ export default function AddEdit({ item, onBack, onSave }) {
   }
 
   const isDateCategory = form.category !== 'references';
-  const isBills = form.category === 'bills';
 
   return (
     <div style={{ paddingBottom: 40 }}>
@@ -357,7 +343,7 @@ export default function AddEdit({ item, onBack, onSave }) {
         </Field>
 
         {/* Date fields */}
-        {isDateCategory && !isBills && (
+        {isDateCategory && (
           <Field label="Expiration Date">
             <input
               type="date"
@@ -365,50 +351,6 @@ export default function AddEdit({ item, onBack, onSave }) {
               onChange={(e) => set('expirationDate', e.target.value)}
               style={inputStyle}
             />
-          </Field>
-        )}
-
-        {isBills && !form.isRecurring && (
-          <Field label="Due Date">
-            <input
-              type="date"
-              value={form.dueDate}
-              onChange={(e) => set('dueDate', e.target.value)}
-              style={inputStyle}
-            />
-          </Field>
-        )}
-
-        {/* Recurring toggle (for bills) */}
-        {isBills && (
-          <Field label="">
-            <label
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 12,
-                padding: '12px 14px',
-                background: colors.surface,
-                border: `1px solid ${colors.border}`,
-                borderRadius: 12,
-                cursor: 'pointer',
-              }}
-            >
-              <input
-                type="checkbox"
-                checked={form.isRecurring}
-                onChange={(e) => set('isRecurring', e.target.checked)}
-                style={{ width: 18, height: 18, accentColor: '#2F3437', flexShrink: 0 }}
-              />
-              <div>
-                <div style={{ fontSize: 14, fontWeight: 600, color: colors.textPrimary }}>
-                  Recurring bill
-                </div>
-                <div style={{ fontSize: 12, color: colors.textTertiary, marginTop: 1 }}>
-                  Track as ongoing obligation, not a one-time deadline
-                </div>
-              </div>
-            </label>
           </Field>
         )}
 

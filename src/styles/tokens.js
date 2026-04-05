@@ -116,12 +116,6 @@ export const categoryMeta = {
     color: '#0891B2',
     bg: '#ECFEFF',
   },
-  bills: {
-    label: 'Bills',
-    icon: 'receipt',
-    color: '#059669',
-    bg: '#ECFDF5',
-  },
   references: {
     label: 'References',
     icon: 'bookmark',
