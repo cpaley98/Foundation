@@ -493,6 +493,7 @@ export default function Home({ items, onItemClick, onCategoryClick }) {
             Life infrastructure dashboard
           </div>
         </div>
+        {/* Foundation logo mark — three stacked blocks */}
         <div
           style={{
             width: 36,
@@ -504,7 +505,11 @@ export default function Home({ items, onItemClick, onCategoryClick }) {
             justifyContent: 'center',
           }}
         >
-          <Icon name="home" size={16} color="#FFFFFF" />
+          <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="0" width="14" height="3.5" rx="1.2" fill="white" fillOpacity="0.9"/>
+            <rect x="1.5" y="5" width="17" height="4" rx="1.2" fill="white" fillOpacity="0.9"/>
+            <rect x="0" y="10.5" width="20" height="5" rx="1.2" fill="white" fillOpacity="0.9"/>
+          </svg>
         </div>
       </div>
 
