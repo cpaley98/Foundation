@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { MOCK_ITEMS } from './data/mockData';
 import { loadItems, saveItems } from './utils/storage';
 import { enrichItems } from './utils/risk';
@@ -80,6 +80,28 @@ export default function App() {
     );
   }, []);
 
+  // ─── Swipe-to-go-back ───────────────────────────────────────────────────────
+  const touchStartX = useRef(null);
+  const touchStartY = useRef(null);
+  const canSwipeBack = navStack.length > 1;
+
+  function handleTouchStart(e) {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  }
+
+  function handleTouchEnd(e) {
+    if (!canSwipeBack || touchStartX.current === null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX.current;
+    const dy = Math.abs(e.changedTouches[0].clientY - touchStartY.current);
+    // Swipe right ≥ 60px, more horizontal than vertical, starting in left 40px
+    if (dx >= 60 && dy < dx && touchStartX.current <= 40) {
+      goBack();
+    }
+    touchStartX.current = null;
+    touchStartY.current = null;
+  }
+
   // ─── Render ─────────────────────────────────────────────────────────────────
   const view = current.view;
   const showBottomNav = view === 'home' || view === 'browse';
@@ -104,6 +126,8 @@ export default function App() {
     >
       {/* Scrollable content */}
       <div
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
         style={{
           flex: 1,
           overflowY: 'auto',
